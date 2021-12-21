@@ -1,0 +1,43 @@
+
+<h1> Here will be task list</h1>
+
+
+<table>
+  <thead>
+    <tr>
+      <td>標題</td>
+      <td>開始時間</td>
+      <td>結束時間</td>
+      <td>狀態</td>
+      <td>內容</td>
+      <td>優先順序</td>
+      <td>分類標籤</td>
+
+    </tr>
+
+  </thead>
+
+  <tbody>
+  <% @tasks.each do |task| %>
+  <tr>
+    <td><%= task.title %></td>
+    <td><%= task.start_time %></td>
+    <td><%= task.end_time %></td>
+    <td><%= task.status %></td>
+    <td><%= task.content%></td>
+    <td><%= task.order %></td>
+    <td><%= task.category %></td>
+    <td>
+        <%= link_to "編輯", edit_task_path(task) %>
+        <%= link_to "刪除", task_path(task), method: "delete", data: { confirm: "確認刪除" } %>
+    </td>
+
+  </tr>
+  <% end %>
+</tbody>
+</table>
+
+
+<%= link_to '新增任務', new_task_path %>
+
+
