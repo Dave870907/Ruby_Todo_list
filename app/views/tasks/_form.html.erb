@@ -1,29 +1,25 @@
 
 
-<%= form_for(task) do |f| %>
-  <%= f.label :title, "標題" %>
-  <%= f.text_field :title %> <br />
+<%= simple_form_for(task) do |f| %>
+  <%= f.input :title, label: "標題" %>
+  
+  <%= f.label :start_time, '開始時間'%>
+  <%= f.datetime_select :start_time%> <br/><br/>
 
-  <%= f.label :start_time, "開始時間" %>
-  <%= f.datetime_select :start_time %> <br />
+  <%= f.label :end_time, '結束時間'%>
+  <%= f.datetime_select :end_time%> <br/><br/>
 
-  <%= f.label :end_time, "結束時間" %>
-  <%= f.datetime_select :end_time %> <br />
+  <%= f.input :status,label: "狀態" %>
+ 
 
-  <%= f.label :status, "狀態" %>
-  <%= f.text_area :status %> <br />
+  <%= f.input :content,label: "內容" %>
+  
 
-  <%= f.label :content, "內容" %>
-  <%= f.text_area :content %> <br />
+  <%= f.input :order, label:"優先順序" %>
 
-  <%= f.label :order, "優先順序" %>
-  <%= f.text_area :order %> <br />
-
-  <%= f.label :category, "分類標籤" %>
-  <%= f.text_area :category %> <br />
-
-  <%= f.label :user_id, "被誰建立（這裡之後要改）" %>
-  <%= f.text_area :user_id %> <br />
+  <%= f.input :category,label: "分類標籤" %>
+  
+  <%= f.input :user_id, label:"被誰建立（這裡之後要改）" %>
   
 
   <%= f.submit %>
