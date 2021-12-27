@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MyRails</title>
+    <title>My Todo list</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -11,6 +11,9 @@
   </head>
 
   <body>
+    <div class = 'container'>
+    <p style="color: green"><%= flash[:notice] %></p>
     <%= yield %>
+    </div>
   </body>
 </html>
