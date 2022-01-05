@@ -56,9 +56,8 @@ RSpec.feature "Tasks", type: :feature do
       end
     scenario 'sort by created_at' do 
       visit "/tasks"
+           
       expect(page).to have_css('#task_table tbody :nth-child(1) td', :text => "title1")
- 
- 
       click_link I18n.t('task.created_at')
       expect(page).to have_css('#task_table tbody :nth-child(1) td', :text => "title2")
 
