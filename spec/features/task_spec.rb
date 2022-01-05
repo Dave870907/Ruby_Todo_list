@@ -57,9 +57,9 @@ RSpec.feature "Tasks", type: :feature do
     scenario 'sort by created_at' do 
       visit "/tasks"
       click_link I18n.t('task.created_at')
-      expect(page).to have_content(/title1.+title2/)
+      expect(page).to have_content(/title1.*title2/)
       click_link I18n.t('task.created_at')
-      expect(page).to have_content(/title2.+title1/)
+      expect(page).to have_content(/title2.*title1/)
 
     end
   end
