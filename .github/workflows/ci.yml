@@ -39,7 +39,7 @@ jobs:
 
       - name: Run RSpec
         run: rspec  
-        # env:
-        #   RAILS_ENV: test
-        #   POSTGRES_USER: postgres
-        #   POSTGRES_PASSWORD: postgres
+        env:
+          RAILS_ENV: test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres

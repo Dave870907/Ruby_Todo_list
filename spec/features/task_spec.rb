@@ -50,17 +50,20 @@ RSpec.feature "Tasks", type: :feature do
       end
     end
   context 'sort tasks by different ways' do
-    task1 = Task.create(title:'title1',created_at:DateTime.now,start_time: DateTime.now,end_time: DateTime.now, 
-      status: '0',category:'0',content:'content',order:'0',user: User.first)
-    task2 = Task.create(title:'title2',created_at:DateTime.now+1.hour,start_time: DateTime.now,end_time: DateTime.now, 
-      status: '0',category:'0',content:'content',order:'0',user: User.first)
+    let!(:tasks) do
+      task1 = Task.create(title:'title1',created_at:DateTime.now,start_time: DateTime.now,end_time: DateTime.now, 
+        status: '0',category:'0',content:'content',order:'0',user: User.first)
+      task2 = Task.create(title:'title2',created_at:DateTime.now+1.hour,start_time: DateTime.now,end_time: DateTime.now, 
+        status: '0',category:'0',content:'content',order:'0',user: User.first)
+      end
     scenario 'sort by created_at' do 
       visit "/tasks"
-      
       click_link I18n.t('task.created_at')
-      expect(page).to have_content(/title1.*title2/)
+      expect(page).to have_css('#task_table tbody :nth-child(1)', :text => "title1")
+
       click_link I18n.t('task.created_at')
-      expect(page).to have_content(/title2.*title1/)
+      expect(page).to have_css('#task_table tbody :nth-child(1)', :text => "title2")
+
 
     end
   end
