@@ -56,10 +56,11 @@ RSpec.feature "Tasks", type: :feature do
       status: '0',category:'0',content:'content',order:'0',user: User.first)
     scenario 'sort by created_at' do 
       visit "/tasks"
+      section = find(:css, '#task_table') 
       click_link I18n.t('task.created_at')
-      expect(page).to have_content(/title1.*title2/)
+      expect(section).to have_content(/title1.*title2/)
       click_link I18n.t('task.created_at')
-      expect(page).to have_content(/title2.*title1/)
+      expect(section).to have_content(/title2.*title1/)
 
     end
   end
