@@ -1,25 +1,25 @@
 
 
 <%= simple_form_for(task) do |f| %>
-  <%= f.input :title, label: "標題" %>
+  <%= f.input :title, label: t('task.title') %>
   
-  <%= f.label :start_time, '開始時間'%>
+  <%= f.label :start_time, t('task.start_time')%>
   <%= f.datetime_select :start_time%> <br/><br/>
 
-  <%= f.label :end_time, '結束時間'%>
+  <%= f.label :end_time, t('task.end_time')%>
   <%= f.datetime_select :end_time%> <br/><br/>
 
-  <%= f.input :status,label: "狀態" %>
+  <%= f.input :status,label: t('task.status') %>
  
 
-  <%= f.input :content,label: "內容" %>
+  <%= f.input :content,label: t('task.content') %>
   
 
-  <%= f.input :order, label:"優先順序" %>
+  <%= f.input :order, label: t("task.order") %>
 
-  <%= f.input :category,label: "分類標籤" %>
+  <%= f.input :category,label: t('task.category') %>
   
-  <%= f.input :user_id, label:"被誰建立（這裡之後要改）" %>
+  <%= f.input :user_id, label: t('task.user_id') %>
   
 
   <%= f.submit %>

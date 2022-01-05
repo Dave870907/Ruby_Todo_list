@@ -162,6 +162,9 @@ GEM
       nokogiri (>= 1.6)
     rails-html-sanitizer (1.4.2)
       loofah (~> 2.3)
+    rails-i18n (7.0.1)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (6.1.4.1)
       actionpack (= 6.1.4.1)
       activesupport (= 6.1.4.1)
@@ -169,6 +172,10 @@ GEM
       rake (>= 0.13)
       thor (~> 1.0)
     rake (13.0.6)
+    ransack (2.5.0)
+      activerecord (>= 5.2.4)
+      activesupport (>= 5.2.4)
+      i18n
     rb-fsevent (0.11.0)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -266,6 +273,8 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-mini-profiler (~> 2.0)
   rails (~> 6.1.4, >= 6.1.4.1)
+  rails-i18n
+  ransack
   rspec-rails
   sass-rails (>= 6)
   sassc-rails (>= 2.1.0)
@@ -277,9 +286,6 @@ DEPENDENCIES
   web-console (>= 4.1.0)
   webdrivers
   webpacker (~> 5.0)
-
-RUBY VERSION
-   ruby 3.0.0p0
 
 BUNDLED WITH
    2.2.3

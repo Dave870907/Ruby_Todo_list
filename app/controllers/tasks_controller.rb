@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
     def index
-        @tasks = Task.all
+        @q = Task.ransack(params[:q])
+        @tasks = @q.result
     end
 
     def new
@@ -11,9 +12,11 @@ class TasksController < ApplicationController
         @task = Task.new(task_params)
 
         if @task.save
-            redirect_to tasks_path, notice: '新增成功！'
-            flash[:notice] = '新增成功！'
+            flash[:notice] = I18n.t('notice.new')
+            redirect_to tasks_path, notice: I18n.t('notice.new')
+            
         else
+            flash[:notice] = @task.errors.full_messages.to_sentence
             render :new
         end
     end
@@ -24,15 +27,16 @@ class TasksController < ApplicationController
     def destroy
         @task = Task.find_by(id: params[:id])
         @task.destroy if @task
-        redirect_to tasks_path, notice: "任務已刪除！"
+        redirect_to tasks_path, notice: I18n.t('notice.delete')
     end
 
     def update
         @task = Task.find_by(id: params[:id])
         if @task.update(task_params)
             redirect_to tasks_path
-            flash[:notice] = '資料更新成功！'
+            flash[:notice] = I18n.t('notice.update')
         else
+            flash[:notice] = @task.errors.full_messages.to_sentence
             render :edit
         end
     end

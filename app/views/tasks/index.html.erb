@@ -1,17 +1,18 @@
 
-<h1> 任務列表</h1>
+<h1> <%= t("page_name.index_page")%></h1>
 
 
 <table class = "table">
   <thead>
     <tr>
-      <td>標題</td>
-      <td>開始時間</td>
-      <td>結束時間</td>
-      <td>狀態</td>
-      <td>內容</td>
-      <td>優先順序</td>
-      <td>分類標籤</td>
+      <td><%=t("task.title")%></td>
+      <td><%=sort_link(@q, :created_at , t("task.created_at") ,default_order: :asc) %></td>
+      <td><%=t("task.start_time")%></td>
+      <td><%=t("task.end_time")%></td>
+      <td><%=t("task.status")%></td>
+      <td><%=t("task.content")%></td>
+      <td><%=t("task.order")%></td>
+      <td><%=t("task.category")%></td>
 
     </tr>
 
@@ -21,15 +22,17 @@
   <% @tasks.each do |task| %>
   <tr>
     <td><%= task.title %></td>
-    <td><%= task.start_time %></td>
-    <td><%= task.end_time %></td>
+    <td><%= task.created_at.strftime("%Y/%m/%d")  %></td>
+    <td><%= task.start_time.strftime("%Y/%m/%d")  %></td>
+    <td><%= task.end_time.strftime("%Y/%m/%d")  %></td>
     <td><%= task.status %></td>
     <td><%= task.content%></td>
     <td><%= task.order %></td>
     <td><%= task.category %></td>
     <td>
-        <%= link_to "編輯", edit_task_path(task) %>
-        <%= link_to "刪除", task_path(task), method: "delete", data: { confirm: "確認刪除" } %>
+        <%= link_to t("task.edit") , edit_task_path(task) %>
+        <%= link_to t('task.delete'), task_path(task), method: "delete", 
+        data: { confirm: t('task.delete_confirm') } ,id:"delete-#{task.id}"%>
     </td>
 
   </tr>
@@ -38,6 +41,6 @@
 </table>
 
 
-<%= link_to '新增任務', new_task_path %>
+<%= link_to t('task.new'), new_task_path %>
 
 

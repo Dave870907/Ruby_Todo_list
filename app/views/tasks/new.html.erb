@@ -1,8 +1,8 @@
-<h1>新增任務</h1>
+<h1><%= t('page_name.new_page')%></h1>
 
 
 
 <%= render 'form' , :task => @task %>
 
 <br />
-<%= link_to '回任務列表', tasks_path %>
+<%= link_to t(:back), tasks_path %>
