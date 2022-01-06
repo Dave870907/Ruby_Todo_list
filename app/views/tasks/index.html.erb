@@ -8,7 +8,7 @@
       <td><%=t("task.title")%></td>
       <td><%=sort_link(@q, :created_at , t("task.created_at") ,default_order: :desc) %></td>
       <td><%=t("task.start_time")%></td>
-      <td><%=t("task.end_time")%></td>
+      <td><%=sort_link(@q, :end_time , t("task.end_time") ,default_order: :desc) %></td>
       <td><%=t("task.status")%></td>
       <td><%=t("task.content")%></td>
       <td><%=t("task.order")%></td>

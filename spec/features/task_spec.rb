@@ -50,7 +50,7 @@ RSpec.feature "Tasks", type: :feature do
     end
   context 'sort tasks by different ways' do
     let!(:tasks) do
-      task1 = Task.create(id:0,title:'title1',created_at:DateTime.now,start_time: DateTime.now+1,end_time: DateTime.now+1.weeks, 
+      task1 = Task.create(id:0,title:'title1',created_at:DateTime.now,start_time: DateTime.now,end_time: DateTime.now, 
         status: 0 ,category:'0',content:'content',order: 0 ,user: User.first)
       task2 = Task.create(id:1,title:'title2',created_at:DateTime.now+1.hour,start_time: DateTime.now+1.weeks,end_time: DateTime.now+1.weeks, 
         status: 0 ,category:'0',content:'content',order: 0 ,user: User.first)
@@ -62,8 +62,14 @@ RSpec.feature "Tasks", type: :feature do
       expect(page).to have_css('#task_table tbody :nth-child(1) td', :text => "title1")
       click_link I18n.t('task.created_at')
       expect(page).to have_css('#task_table tbody :nth-child(1) td', :text => "title2")
+    end
+    scenario 'sort by end_time' do 
+      visit "/tasks"
 
-
+      expect(page).to have_css('#task_table tbody :nth-child(1) td', :text => "title1")
+      click_link I18n.t('task.end_time')
+      expect(page).to have_css('#task_table tbody :nth-child(1) td', :text => "title2")
     end
   end
+
 end
