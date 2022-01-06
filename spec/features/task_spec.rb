@@ -55,6 +55,7 @@ RSpec.feature "Tasks", type: :feature do
       task2 = Task.create(id:1,title:'title2',created_at:DateTime.now+1.hour,start_time: DateTime.now+1.weeks,end_time: DateTime.now+1.weeks, 
         status: 0 ,category:'0',content:'content',order: 0 ,user: User.first)
       end
+      
     scenario 'sort by created_at' do 
       visit "/tasks"
            
