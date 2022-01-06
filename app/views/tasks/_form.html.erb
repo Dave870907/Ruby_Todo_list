@@ -1,5 +1,5 @@
 
-<%# status 跟 order 之後要用 css 做成 inline %>
+
 <%= simple_form_for(task) do |f| %>
   <%= f.input :title, label: t('task.title') %>
   
@@ -11,13 +11,13 @@
 
   <%= f.input :status ,label: t('task.status') ,as: :radio_buttons ,
         collection:[[t('task.status_type')[0],0],[t('task.status_type')[1],1],[t('task.status_type')[2],2]] ,
-        :checked => [t('task.status_type')[0],0]%>
+        :checked => [t('task.status_type')[0],0] , :item_wrapper_class => 'radio-inline'%>
 
   <%= f.input :content,label: t('task.content') %>
 
   <%= f.input :order, label: t('task.order') ,as: :radio_buttons ,
         collection:[[t('task.order_type')[0],0],[t('task.order_type')[1],1],[t('task.order_type')[2],2]] ,
-        :checked => [t('task.order_type')[0],0]%>
+        :checked => [t('task.order_type')[0],0] , :item_wrapper_class => 'radio-inline'%>
 
   <%= f.input :category,label: t('task.category') %>
   
