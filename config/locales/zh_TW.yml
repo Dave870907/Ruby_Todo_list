@@ -5,8 +5,16 @@
     start_time: 開始時間
     end_time: 結束時間
     status: 狀態
+    status_type:
+      - 待處理
+      - 進行中
+      - 已完成
     content: 內容
     order: 優先順序
+    order_type: 
+      - 低
+      - 中
+      - 高
     category: 分類標籤
     edit: 編輯
     delete: 刪除

@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
     belongs_to :user
-    validates :start_time, :end_time, :title, presence: true
+    validates :start_time, :end_time, :title, :status, :order ,presence: true
     validate :time_order ,if: :time_present?
     
 

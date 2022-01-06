@@ -7,7 +7,7 @@ RSpec.describe Task, type: :model do
     }
     let!(:new_task) {
       @task = Task.new(title:'title',start_time: DateTime.now,end_time: DateTime.now, 
-        status: '0',category:'0',content:'content',order:'0',user: @user)
+        status: 0,category:'hi',content:'content',order:0,user: @user)
     }
 
     it 'ensure start time presence' do
@@ -25,6 +25,11 @@ RSpec.describe Task, type: :model do
       expect(@task.save).to eq(false)
     end
 
+    it 'ensure order and status presence' do 
+      @task.status = nil
+      @task.order = nil
+      expect(@task.save).to eq(false)
+    end
     it 'ensure title presence' do 
       @task.title = nil
       expect(@task.save).to eq(false)

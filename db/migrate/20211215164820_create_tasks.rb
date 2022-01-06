@@ -3,10 +3,10 @@ class CreateTasks < ActiveRecord::Migration[6.1]
     create_table :tasks do |t|
       t.datetime :start_time
       t.datetime :end_time
-      t.string :status
+      t.integer :status
       t.string :title
       t.text :content
-      t.string :order
+      t.integer :order
       t.string :category
       t.integer :user_id
 

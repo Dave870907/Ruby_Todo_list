@@ -25,9 +25,9 @@
     <td><%= task.created_at.strftime("%Y/%m/%d")  %></td>
     <td><%= task.start_time.strftime("%Y/%m/%d")  %></td>
     <td><%= task.end_time.strftime("%Y/%m/%d")  %></td>
-    <td><%= task.status %></td>
+    <td><%= t('task.status_type')[task.status] %></td>
     <td><%= task.content%></td>
-    <td><%= task.order %></td>
+    <td><%= t('task.order_type')[task.order] %></td>
     <td><%= task.category %></td>
     <td>
         <%= link_to t("task.edit") , edit_task_path(task) %>

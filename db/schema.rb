@@ -18,10 +18,10 @@ ActiveRecord::Schema.define(version: 2021_12_15_164820) do
   create_table "tasks", force: :cascade do |t|
     t.datetime "start_time"
     t.datetime "end_time"
-    t.string "status"
+    t.integer "status"
     t.string "title"
     t.text "content"
-    t.string "order"
+    t.integer "order"
     t.string "category"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false
