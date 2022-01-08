@@ -1,28 +1,21 @@
 
 
 <%= simple_form_for(task) do |f| %>
-  <%= f.input :title, label: t('task.title') %>
-  
-  <%= f.label :start_time, t('task.start_time')%>
-  <%= f.datetime_select :start_time%> <br/><br/>
+  <%= f.input :title %>
+  <%= f.input :start_time , wrapper: :horizontal_select_date %>
+  <%= f.input :end_time , wrapper: :horizontal_select_date%>
+  <%= f.input :status  ,as: :radio_buttons ,
+        collection:[:pending, :process, :finish] ,
+        # :checked => [t('task.status_type')[0],0] , 
+        :item_wrapper_class => 'radio-inline'%>
 
-  <%= f.label :end_time, t('task.end_time')%>
-  <%= f.datetime_select :end_time%> <br/><br/>
+  <%= f.input :content %>
 
-  <%= f.input :status ,label: t('task.status') ,as: :radio_buttons ,
-        collection:[[t('task.status_type')[0],0],[t('task.status_type')[1],1],[t('task.status_type')[2],2]] ,
-        :checked => [t('task.status_type')[0],0] , :item_wrapper_class => 'radio-inline'%>
-
-  <%= f.input :content,label: t('task.content') %>
-
-  <%= f.input :order, label: t('task.order') ,as: :radio_buttons ,
-        collection:[[t('task.order_type')[0],0],[t('task.order_type')[1],1],[t('task.order_type')[2],2]] ,
-        :checked => [t('task.order_type')[0],0] , :item_wrapper_class => 'radio-inline'%>
-
-  <%= f.input :category,label: t('task.category') %>
-  
-  <%= f.input :user_id, label: t('task.user_id') %>
-  
-
+  <%= f.input :order ,as: :radio_buttons ,
+        collection:[[t('types.order')[0],0], [t('types.order')[1],1], [t('types.order')[2],2]] ,
+        # :checked => [t('task.order_type')[0],0] , 
+        :item_wrapper_class => 'radio-inline'%>
+  <%= f.input :category %>
+  <%= f.input :user_id %>
   <%= f.submit %>
 <% end %>

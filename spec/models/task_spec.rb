@@ -7,7 +7,7 @@ RSpec.describe Task, type: :model do
     }
     let!(:new_task) {
       @task = Task.new(title:'title',start_time: DateTime.now,end_time: DateTime.now, 
-        status: 0,category:'hi',content:'content',order:0,user: @user)
+        status: 'pending',category:'hi',content:'content',order:0,user: @user)
     }
 
     it 'ensure start time presence' do

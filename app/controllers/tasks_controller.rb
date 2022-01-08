@@ -13,7 +13,7 @@ class TasksController < ApplicationController
 
         if @task.save
             flash[:notice] = I18n.t('notice.new')
-            redirect_to tasks_path, notice: I18n.t('notice.new')
+            redirect_to tasks_path
             
         else
             flash[:notice] = @task.errors.full_messages.to_sentence
