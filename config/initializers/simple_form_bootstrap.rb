@@ -44,7 +44,7 @@ SimpleForm.setup do |config|
   # add validation classes to `input_field`
   config.input_field_error_class = 'is-invalid'
   config.input_field_valid_class = 'is-valid'
-
+  
 
   # vertical forms
   #
@@ -258,7 +258,16 @@ SimpleForm.setup do |config|
     b.use :error, wrap_with: { tag: 'div', class: 'invalid-feedback' }
     b.optional :hint, wrap_with: { tag: 'small', class: 'form-text text-muted' }
   end
-
+  config.wrappers :horizontal_select_date, tag: 'div', class: 'form-group', error_class: 'has-error' do |b|
+    b.use :html5
+    b.optional :readonly
+    b.use :label, class: 'control-label'
+    b.wrapper tag: 'div', class: 'form-inline' do |ba|
+      ba.use :input, class: 'form-control'
+      ba.use :error, wrap_with: { tag: 'span', class: 'help-block' }
+      ba.use :hint,  wrap_with: { tag: 'p', class: 'help-block' }
+    end
+  end
   # inline input for boolean
   config.wrappers :inline_boolean, tag: 'span', class: 'form-check mb-2 mr-sm-2', error_class: 'form-group-invalid', valid_class: 'form-group-valid' do |b|
     b.use :html5
@@ -420,6 +429,7 @@ SimpleForm.setup do |config|
     check_boxes:   :vertical_collection,
     date:          :vertical_multi_select,
     datetime:      :vertical_multi_select,
+    # datetime:      :horizontal_select_date,
     file:          :vertical_file,
     radio_buttons: :vertical_collection,
     range:         :vertical_range,

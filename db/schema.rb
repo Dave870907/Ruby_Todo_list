@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2021_12_15_164820) do
     t.string "status"
     t.string "title"
     t.text "content"
-    t.string "order"
+    t.integer "order"
     t.string "category"
     t.integer "user_id"
     t.datetime "created_at", precision: 6, null: false

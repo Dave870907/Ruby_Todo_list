@@ -1,26 +1,21 @@
 
 
 <%= simple_form_for(task) do |f| %>
-  <%= f.input :title, label: "標題" %>
-  
-  <%= f.label :start_time, '開始時間'%>
-  <%= f.datetime_select :start_time%> <br/><br/>
+  <%= f.input :title %>
+  <%= f.input :start_time , wrapper: :horizontal_select_date %>
+  <%= f.input :end_time , wrapper: :horizontal_select_date%>
+  <%= f.input :status  ,as: :radio_buttons ,
+        collection:[:pending, :process, :finish] ,
+        # :checked => [t('task.status_type')[0],0] , 
+        :item_wrapper_class => 'radio-inline'%>
 
-  <%= f.label :end_time, '結束時間'%>
-  <%= f.datetime_select :end_time%> <br/><br/>
+  <%= f.input :content %>
 
-  <%= f.input :status,label: "狀態" %>
- 
-
-  <%= f.input :content,label: "內容" %>
-  
-
-  <%= f.input :order, label:"優先順序" %>
-
-  <%= f.input :category,label: "分類標籤" %>
-  
-  <%= f.input :user_id, label:"被誰建立（這裡之後要改）" %>
-  
-
+  <%= f.input :order ,as: :radio_buttons ,
+        collection:[[t('types.order')[0],0], [t('types.order')[1],1], [t('types.order')[2],2]] ,
+        # :checked => [t('task.order_type')[0],0] , 
+        :item_wrapper_class => 'radio-inline'%>
+  <%= f.input :category %>
+  <%= f.input :user_id %>
   <%= f.submit %>
 <% end %>

@@ -1,17 +1,38 @@
 
-<h1> 任務列表</h1>
+<h1> <%= t("page_name.index_page")%></h1>
 
+<%= search_form_for @q do |f| %>
+  <%= f.label :title_cont ,t('search_form.title')%>
+  <%= f.search_field :title_cont %>
+  <%= f.submit %>
+<% end %>
+<br>
+<%= search_form_for @q do |f| %>
 
-<table class = "table">
+  <%= f.label :status_eq ,t('search_form.status')%>
+  <%= f.radio_button :status_eq, '' %>
+  <%= f.label t('search_form.all') %>
+  <%= f.radio_button :status_eq, 'pending' %>
+  <%= f.label t('types.status.pending') %>
+  <%= f.radio_button :status_eq, 'process' %>
+  <%= f.label t('types.status.process') %>
+  <%= f.radio_button :status_eq, 'finish' %>
+  <%= f.label t('types.status.finish') %>
+
+<%= f.submit %>
+<% end %>
+<br>
+<table class = "table" id="task_table">
   <thead>
     <tr>
-      <td>標題</td>
-      <td>開始時間</td>
-      <td>結束時間</td>
-      <td>狀態</td>
-      <td>內容</td>
-      <td>優先順序</td>
-      <td>分類標籤</td>
+      <td><%=@tasks.human_attribute_name(:title) %></td>
+      <td><%=sort_link(@q, :created_at ,@tasks.human_attribute_name(:created_at) ,default_order: :desc) %></td>
+      <td><%=@tasks.human_attribute_name(:start_time)%></td>
+      <td><%=sort_link(@q, :end_time , @tasks.human_attribute_name(:end_time) ,default_order: :desc) %></td>
+      <td><%=@tasks.human_attribute_name(:status)%></td>
+      <td><%=@tasks.human_attribute_name(:content)%></td>
+      <td><%=@tasks.human_attribute_name(:order)%></td>
+      <td><%=@tasks.human_attribute_name(:category)%></td>
 
     </tr>
 
@@ -21,15 +42,17 @@
   <% @tasks.each do |task| %>
   <tr>
     <td><%= task.title %></td>
-    <td><%= task.start_time %></td>
-    <td><%= task.end_time %></td>
-    <td><%= task.status %></td>
+    <td><%= task.created_at.strftime("%Y/%m/%d")  %></td>
+    <td><%= task.start_time.strftime("%Y/%m/%d")  %></td>
+    <td><%= task.end_time.strftime("%Y/%m/%d")  %></td>
+    <td><%= t("types.status.#{task.status}")%></td>
     <td><%= task.content%></td>
-    <td><%= task.order %></td>
+    <td><%= t('types.order')[task.order] %></td>
     <td><%= task.category %></td>
     <td>
-        <%= link_to "編輯", edit_task_path(task) %>
-        <%= link_to "刪除", task_path(task), method: "delete", data: { confirm: "確認刪除" } %>
+        <%= link_to t("action.edit") , edit_task_path(task) %>
+        <%= link_to t('action.delete'), task_path(task), method: "delete", 
+        data: { confirm: t('action.delete_confirm') } ,id:"delete-#{task.id}"%>
     </td>
 
   </tr>
@@ -38,6 +61,6 @@
 </table>
 
 
-<%= link_to '新增任務', new_task_path %>
+<%= link_to t('action.new'), new_task_path %>
 
 

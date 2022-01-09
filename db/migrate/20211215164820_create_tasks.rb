@@ -6,7 +6,7 @@ class CreateTasks < ActiveRecord::Migration[6.1]
       t.string :status
       t.string :title
       t.text :content
-      t.string :order
+      t.integer :order
       t.string :category
       t.integer :user_id
 

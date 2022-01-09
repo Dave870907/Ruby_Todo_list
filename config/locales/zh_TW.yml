@@ -1,0 +1,53 @@
+zh-TW:
+  simple_form:
+    options:
+      task:
+        status:
+          pending: 待處理
+          process: 進行中
+          finish: 已完成
+
+  activerecord:
+    models:
+      task: 任務
+    attributes:
+      task:  
+        status: 狀態
+        title: 標題
+        created_at: 建立時間
+        start_time: 開始時間
+        end_time: 結束時間
+        content: 內容
+        order: 優先順序
+        category: 分類標籤
+        user_id: 被誰建立（這裡之後要改）
+
+  types:
+    status:
+      pending: 待處理
+      process: 進行中
+      finish: 已完成
+    order: 
+      - 低
+      - 中
+      - 高
+
+  action:
+    edit: 編輯
+    delete: 刪除
+    delete_confirm: 確認刪除
+    new: 新增任務
+  page_name:  
+    index_page: 任務列表
+    new_page: 新增任務 
+    edit_page: 編輯任務
+  notice: 
+    new: 新增成功！
+    delete: 任務已刪除！
+    update: 資料更新成功！
+  back: 回任務列表
+  search_form:
+    title: 標題包含
+    status: 狀態為
+    all: 全
+  
