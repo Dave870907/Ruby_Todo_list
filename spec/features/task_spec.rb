@@ -53,7 +53,7 @@ RSpec.feature "Tasks", type: :feature do
       task1 = Task.create(id:0,title:'title1',created_at:DateTime.now,start_time: DateTime.now,end_time: DateTime.now, 
         status: 'pending' ,category:'0',content:'content',order: 0 ,user: User.first)
       task2 = Task.create(id:1,title:'title2',created_at:DateTime.now+1.hour,start_time: DateTime.now+1.weeks,end_time: DateTime.now+1.weeks, 
-        status: 'process' ,category:'0',content:'content',order: 0 ,user: User.first)
+        status: 'process' ,category:'0',content:'content',order: 1 ,user: User.first)
       end
       
     scenario 'sort by created_at' do 
@@ -67,8 +67,35 @@ RSpec.feature "Tasks", type: :feature do
       visit "/tasks"
 
       expect(page).to have_css('#task_table tbody :nth-child(1) td', :text => "title1")
-      click_link Task.human_attribute_name(:created_at)
+      click_link Task.human_attribute_name(:end_time)
       expect(page).to have_css('#task_table tbody :nth-child(1) td', :text => "title2")
+    end
+
+    scenario 'sort by order' do 
+      visit "/tasks"
+
+      expect(page).to have_css('#task_table tbody :nth-child(1) td', :text => "title1")
+      click_link Task.human_attribute_name(:order)
+      expect(page).to have_css('#task_table tbody :nth-child(1) td', :text => "title2")
+    end
+
+    scenario "search by title" do 
+      visit "/tasks"
+
+      within('#task_search') do 
+        fill_in 'q_title_cont' ,with: 'title2'
+        click_button 'commit'
+      end
+      expect(page).to have_no_content('/title1/')
+    end
+
+    scenario "filter by status" do 
+      visit "/tasks"
+      within('#task_search') do 
+        find(:css , '#q_status_eq_process').click
+        click_button 'commit'
+      end
+      expect(page).to have_no_content('/title1/')
     end
   end
 
