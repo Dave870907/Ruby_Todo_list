@@ -1,8 +1,12 @@
 class TasksController < ApplicationController
+
+
     def index
-        @q = Task.ransack(params[:q])
-        @tasks = @q.result
-        @tasks = @tasks.order(id: :ASC).page(params[:page]).per(9)
+        if current_user
+            @q = current_user.tasks.ransack(params[:q])
+            @tasks = @q.result
+            @tasks = @tasks.order(id: :ASC).page(params[:page]).per(9)
+        end
     end
 
     def new
@@ -11,6 +15,8 @@ class TasksController < ApplicationController
 
     def create
         @task = Task.new(task_params)
+        @task.user_id = current_user.id if current_user
+
 
         if @task.save
             flash[:notice] = I18n.t('notice.new')

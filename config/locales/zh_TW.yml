@@ -10,6 +10,7 @@ zh-TW:
   activerecord:
     models:
       task: 任務
+      user: 使用者
     attributes:
       task:  
         status: 狀態
@@ -20,7 +21,10 @@ zh-TW:
         content: 內容
         order: 優先順序
         category: 分類標籤
-        user_id: 被誰建立（這裡之後要改）
+      user:
+        user_name: 名字
+        email: 電子信箱
+        password: 密碼
 
   types:
     status:
@@ -37,14 +41,22 @@ zh-TW:
     delete: 刪除
     delete_confirm: 確認刪除
     new: 新增任務
+    logout: 登出
+    login: 登入
   page_name:  
     index_page: 任務列表
     new_page: 新增任務 
     edit_page: 編輯任務
+    new_user_page: 新增使用者
+    login: 登入
   notice: 
     new: 新增成功！
     delete: 任務已刪除！
     update: 資料更新成功！
+    login: 成功登入！
+    login_fail: 使用者資料輸入錯誤！
+    logout: 已登出
+
   back: 回任務列表
   search_form:
     title: 標題包含

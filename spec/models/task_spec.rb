@@ -2,10 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Task, type: :model do
   context 'validation tests' do
-    let!(:new_user) {
-      @user  = User.new(user_name: 'Dave')
-    }
+
     let!(:new_task) {
+      @user = User.create(user_name: 'user', email: '00@example.com', password: '00')
       @task = Task.new(title:'title',start_time: DateTime.now,end_time: DateTime.now, 
         status: 'pending',category:'hi',content:'content',order:0,user: @user)
     }
@@ -42,7 +41,7 @@ RSpec.describe Task, type: :model do
       expect(@task.save).to eq(false)  
     end
 
-    it 'should save successfully' do 
+    it 'should save successfully' do
       expect(@task.save).to eq(true)
     end
   end
