@@ -1,0 +1,36 @@
+
+<h1> <%= t("page_name.user_index_page")%></h1>
+
+<br>
+<table class = "table" id="task_table">
+  <thead>
+    <tr>
+      <td><%= @users.human_attribute_name(:user_name) %></td>
+      <td><%= @users.human_attribute_name(:email)%></td>
+      <td><%= t('tasks_num')%></td>
+
+    </tr>
+
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+  <tr>
+    <td><%= link_to user.user_name , user%></td>
+    <td><%= user.email  %></td>
+    <td><%= user.tasks.count%></td>
+    
+    <td>
+        <%= link_to t("action.edit") , edit_user_path(user) %>
+        <%= link_to t('action.delete'), user_path(user), method: "delete", 
+        data: { confirm: t('action.delete_confirm') } ,id:"delete-#{user.id}"%>
+    </td>
+
+  </tr>
+  <% end %>
+</tbody>
+</table>
+<%= paginate @users %> 
+<br>
+
+<%= link_to t('action.new_user'), new_user_path %>
