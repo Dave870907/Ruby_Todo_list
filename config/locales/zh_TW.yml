@@ -56,6 +56,7 @@ zh-TW:
     login: 成功登入！
     login_fail: 使用者資料輸入錯誤！
     logout: 已登出
+    not_login: 您尚未登入
 
   back: 回任務列表
   search_form:

@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
 # 使用者登入
   def create
     if @user && @user.authenticate(params[:session][:password])
-      session[:user_id] = @user.id
+      log_in(@user)
       flash[:notice] = I18n.t('notice.login')
       redirect_to tasks_path(@user)
     else
