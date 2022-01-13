@@ -1,8 +1,12 @@
 class TasksController < ApplicationController
+    before_action :logged_in_user, only: [:index, :new, :create, :edit, :update, :destroy]
+
     def index
-        @q = Task.ransack(params[:q])
+
+        @q = current_user.tasks.ransack(params[:q])
         @tasks = @q.result
         @tasks = @tasks.order(id: :ASC).page(params[:page]).per(9)
+
     end
 
     def new
@@ -10,7 +14,8 @@ class TasksController < ApplicationController
     end
 
     def create
-        @task = Task.new(task_params)
+        @task = current_user.tasks.create(task_params)
+
 
         if @task.save
             flash[:notice] = I18n.t('notice.new')
@@ -44,7 +49,7 @@ class TasksController < ApplicationController
     private
     def task_params
         params.require(:task).permit(:title,:start_time,:end_time,
-                                    :status,:content,:order,:category,:user_id )
+                                    :status,:content,:order,:category)
     end    
 
 
