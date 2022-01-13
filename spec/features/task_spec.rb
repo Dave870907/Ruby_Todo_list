@@ -23,7 +23,7 @@ RSpec.feature "Tasks", type: :feature do
     scenario "create fail" do
       visit '/tasks/new' 
       click_button 'commit'
-      expect(page).to have_content(I18n.t('errors.messages.blank'))
+      expect(page).to have_content(I18n.t('notice.login_fail'))
     end
   end
     
