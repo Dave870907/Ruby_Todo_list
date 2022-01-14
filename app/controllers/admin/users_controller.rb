@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
 
-    before_action :find_user, only: %i[edit show]
+    before_action :find_user, only: %i[edit show destroy update]
 
     def index 
         @users = User.all.order(id: :ASC).page(params[:page]).per(9)
@@ -12,14 +12,13 @@ class Admin::UsersController < ApplicationController
     
     def show
     
-        @q = find_user.tasks.ransack(params[:q])
+        @q = @user.tasks.ransack(params[:q])
         @tasks = @q.result.order('id ASC').page(params[:page]).per(9)
 
     end
 
     def create
         @user = User.new(user_params)
-
         if @user.save
             redirect_to admin_root_path , notice: t('notice.new')
         else 
@@ -27,18 +26,15 @@ class Admin::UsersController < ApplicationController
         end
     end
 
-    def edit
-        @user = find_user
+    def edit 
     end
     
     def destroy
-        @user = find_user.destroy
+        @user.destroy
         redirect_to admin_root_path, notice: I18n.t('notice.delete')
     end
 
-
     def update
-        @user = find_user
         if @user.update(user_params)
             redirect_to admin_root_path
             flash[:notice] = I18n.t('notice.update')
