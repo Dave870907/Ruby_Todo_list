@@ -1,0 +1,13 @@
+<h3><%= t('page_name.user_edit_page')%></h3>
+<h3> <%= @error_messgae%></h3>
+
+<%= simple_form_for @user , url: "/admin/users/#{@user.id}"  do |form| %>
+ 
+    <%= form.input :user_name %>
+    <%= form.input :email %>
+    <%= form.input :password %>
+    <%= form.submit %>
+
+<%end%>
+<br>
+<%= link_to t('back.admin'), admin_root_path %>

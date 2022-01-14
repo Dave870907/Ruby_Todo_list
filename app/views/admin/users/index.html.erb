@@ -16,13 +16,13 @@
   <tbody>
   <% @users.each do |user| %>
   <tr>
-    <td><%= link_to user.user_name , user%></td>
+    <td><%= link_to user.user_name , admin_user_path(user)%></td>
     <td><%= user.email  %></td>
     <td><%= user.tasks.count%></td>
     
     <td>
-        <%= link_to t("action.edit") , edit_user_path(user) %>
-        <%= link_to t('action.delete'), user_path(user), method: "delete", 
+        <%= link_to t("action.edit") , edit_admin_user_path(user) %>
+        <%= link_to t('action.delete'), admin_user_path(user), method: "delete", 
         data: { confirm: t('action.delete_confirm') } ,id:"delete-#{user.id}"%>
     </td>
 
@@ -33,4 +33,4 @@
 <%= paginate @users %> 
 <br>
 
-<%= link_to t('action.new_user'), new_user_path %>
+<%= link_to t('action.new_user'), admin_sign_up_path %>

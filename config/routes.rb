@@ -5,16 +5,20 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   resources :tasks
-  resources :users, only: [:new, :create, :show, :edit, :update, :destroy]
+  
 
   #session
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
   #user
-  get 'admin' ,to: 'users#index'
-  get 'sign_up', to: 'users#new'
-  resources :users, except: [:new]
   
+  namespace :admin do
+    resources :users , only: [:create, :show, :edit, :update, :destroy]
+    get 'sign_up', to: 'users#new'
+    root 'users#index'
+  end
+  
+
   root 'tasks#index'
 end
