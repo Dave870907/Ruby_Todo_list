@@ -54,7 +54,7 @@ zh-TW:
     user_edit_page: 編輯用戶資料
   notice: 
     new: 新增成功！
-    delete: 任務已刪除！
+    delete: 刪除成功！
     update: 資料更新成功！
     login: 成功登入！
     login_fail: 使用者資料輸入錯誤！

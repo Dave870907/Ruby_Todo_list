@@ -3,7 +3,7 @@ class Admin::UsersController < ApplicationController
     before_action :find_user, only: %i[edit show destroy update]
 
     def index 
-        @users = User.all.order(id: :ASC).page(params[:page]).per(9)
+        @users = User.order(id: :ASC).page(params[:page]).per(9)
     end
 
     def new
