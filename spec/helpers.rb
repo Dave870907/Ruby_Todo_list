@@ -13,7 +13,7 @@ module Helpers
     end
   
     def sign_up
-      visit sign_up_path
+      visit admin_sign_up_path
       within('form') do
         fill_in 'user_user_name', with: 'Dave'
         fill_in 'user_email', with: 'd2cb103@gmail.com'

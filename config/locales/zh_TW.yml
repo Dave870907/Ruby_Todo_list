@@ -41,6 +41,7 @@ zh-TW:
     delete: 刪除
     delete_confirm: 確認刪除
     new: 新增任務
+    new_user: 新增用戶
     logout: 登出
     login: 登入
   page_name:  
@@ -49,16 +50,20 @@ zh-TW:
     edit_page: 編輯任務
     new_user_page: 新增使用者
     login: 登入
+    user_index_page: 用戶管理
+    user_edit_page: 編輯用戶資料
   notice: 
     new: 新增成功！
-    delete: 任務已刪除！
+    delete: 刪除成功！
     update: 資料更新成功！
     login: 成功登入！
     login_fail: 使用者資料輸入錯誤！
     logout: 已登出
     not_login: 您尚未登入
-
-  back: 回任務列表
+  tasks_num: 任務數量
+  back: 
+    task: 回任務列表
+    admin: 回管理頁面
   search_form:
     title: 標題包含
     status: 狀態為

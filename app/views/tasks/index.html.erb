@@ -1,3 +1,6 @@
 
 
 <%= render "tasklist", tasks: @tasks %>
+
+<%= link_to t('action.new'), new_task_path %><br><br>
+<%= link_to t('action.logout'), sessions_destroy_path%>
