@@ -16,6 +16,9 @@ class Task < ApplicationRecord
     belongs_to :user
     validates :start_time, :end_time, :title, :status, :order ,presence: true
     validate :time_order ,if: :time_present?
+
+    has_many :label_relations
+    has_many :labels, through: :label_relations
     
 
     private

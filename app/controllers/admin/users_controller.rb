@@ -1,9 +1,9 @@
 class Admin::UsersController < ApplicationController
 
-    before_action :find_user, only: %i[edit show destroy update]
+    before_action :find_user, only: %i[index edit show destroy update]
 
     def index 
-        if !current_user.admin?
+        unless current_user.admin?
             redirect_to tasks_path , notice: t('notice.not_admin')
         end
         @users = User.order(id: :ASC).page(params[:page]).per(9)
