@@ -6,6 +6,7 @@ zh-TW:
           pending: 待處理
           process: 進行中
           finish: 已完成
+        
 
   activerecord:
     models:
@@ -25,6 +26,7 @@ zh-TW:
         user_name: 名字
         email: 電子信箱
         password: 密碼
+        admin: 管理員
 
   types:
     status:
@@ -35,6 +37,9 @@ zh-TW:
       - 低
       - 中
       - 高
+    admin:
+      add: 管理員
+      minus: 非管理員
 
   action:
     edit: 編輯
@@ -60,6 +65,8 @@ zh-TW:
     login_fail: 使用者資料輸入錯誤！
     logout: 已登出
     not_login: 您尚未登入
+    not_admin: 權限不足 無法查看
+    no_admin: 無法移除最後一個管理員
   tasks_num: 任務數量
   back: 
     task: 回任務列表

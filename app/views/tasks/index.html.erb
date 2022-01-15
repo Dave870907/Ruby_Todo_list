@@ -2,5 +2,9 @@
 
 <%= render "tasklist", tasks: @tasks %>
 
-<%= link_to t('action.new'), new_task_path %><br><br>
+<%= link_to t('action.new'), new_task_path %>
+
+<% if current_user.admin? %>
+  <br><br><%= link_to '管理頁面', admin_root_path %>
+<% end %><br><br>
 <%= link_to t('action.logout'), sessions_destroy_path%>

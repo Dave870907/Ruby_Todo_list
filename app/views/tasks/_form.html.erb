@@ -6,14 +6,12 @@
   <%= f.input :end_time , wrapper: :horizontal_select_date%>
   <%= f.input :status  ,as: :radio_buttons ,
         collection:[:pending, :process, :finish] ,
-        # :checked => [t('task.status_type')[0],0] , 
         :item_wrapper_class => 'radio-inline'%>
 
   <%= f.input :content %>
 
   <%= f.input :order ,as: :radio_buttons ,
         collection:[[t('types.order')[0],0], [t('types.order')[1],1], [t('types.order')[2],2]] ,
-        # :checked => [t('task.order_type')[0],0] , 
         :item_wrapper_class => 'radio-inline'%>
   <%= f.input :category %>
 

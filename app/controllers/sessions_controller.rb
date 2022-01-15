@@ -9,7 +9,11 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       log_in(@user)
       flash[:notice] = I18n.t('notice.login')
-      redirect_to tasks_path(@user)
+      if !current_user.admin?
+        redirect_to tasks_path(@user)
+      else
+        redirect_to admin_root_path
+      end
     else
       redirect_to login_path, notice: I18n.t('notice.login_fail')
 
