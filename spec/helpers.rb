@@ -10,15 +10,10 @@ module Helpers
         fill_in 'session_password', with:'0907'
       end
       click_button 'commit'
+
     end
   
     def sign_up
-      visit admin_sign_up_path
-      within('form') do
-        fill_in 'user_user_name', with: 'Dave'
-        fill_in 'user_email', with: 'd2cb103@gmail.com'
-        fill_in 'user_password', with: '0907'
-      end
-      click_button 'commit'
+      User.create!( :user_name => "Dave" ,:email => "d2cb103@gmail.com" ,:password => '0907' ,admin: true)
     end
   end

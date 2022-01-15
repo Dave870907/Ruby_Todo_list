@@ -54,6 +54,10 @@ class Admin::UsersController < ApplicationController
         @user = User.find_by(id: params[:id])
     end
 
+    def user_params
+        params.require(:user).permit(:user_name, :email, :password)
+    end
+
     def admin_params
         params.require(:user).permit(:user_name, :email, :password, :admin)
     end
