@@ -1,7 +1,8 @@
 class Admin::UsersController < ApplicationController
 
     before_action :find_user, except: %i[new create]
-    before_action :check_user_admin, only: %i[index]
+    before_action :require_admin
+
     def index 
         @users = User.order(id: :ASC).page(params[:page]).per(9)
     end
@@ -63,6 +64,12 @@ class Admin::UsersController < ApplicationController
         unless current_user.admin?
             redirect_to tasks_path , notice: t('notice.not_admin')
         end
+    end
+
+    def require_admin
+        return if current_user&.admin == true
+      
+        redirect_to root_path , notice: t('notice.not_admin')
     end
 
 end
