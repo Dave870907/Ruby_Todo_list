@@ -83,4 +83,7 @@ zh-TW:
     status: 狀態為
     all: 全
     label: 請選擇標籤
+  error:
+    not_found: 404 無此頁面
+    internal_server_error: 500 伺服器出現問題
   

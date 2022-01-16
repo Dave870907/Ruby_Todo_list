@@ -18,5 +18,8 @@ module MyRails
     #
     config.time_zone = "Taipei"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.exceptions_app = self.routes
+
   end
 end
