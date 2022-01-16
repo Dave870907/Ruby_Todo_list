@@ -13,7 +13,8 @@
   <%= f.input :order ,as: :radio_buttons ,
         collection:[[t('types.order')[0],0], [t('types.order')[1],1], [t('types.order')[2],2]] ,
         :item_wrapper_class => 'radio-inline'%>
-  <%= f.input :category %>
+        
+  <%= f.input :label_items, as: :select, collection: Label.order(:name), label_method: :name,value_method: :name, input_html: {multiple: true} %>
 
   <%= f.submit %>
 <% end %>

@@ -1,6 +1,6 @@
 class Admin::UsersController < ApplicationController
 
-    before_action :find_user, only: %i[index edit show destroy update]
+    before_action :find_user, except: %i[new create]
 
     def index 
         unless current_user.admin?
