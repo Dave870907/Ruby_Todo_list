@@ -1,6 +1,6 @@
 class LabelsController < ApplicationController
     def index
-        @labels = Label.all.page(params[:page]).per(9)
+        @labels = Label.page(params[:page]).per(9)
     end
     def new
         @label = Label.new
@@ -19,7 +19,7 @@ class LabelsController < ApplicationController
     end
 
     def destroy
-        @label = Label.find_by(id: params[:id]).destroy
+        Label.find_by(id: params[:id]).destroy
         redirect_to labels_path, notice: I18n.t('notice.delete')
     end
 
