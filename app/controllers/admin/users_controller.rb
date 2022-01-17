@@ -60,16 +60,11 @@ class Admin::UsersController < ApplicationController
         params.require(:user).permit(:user_name, :email, :password, :admin)
     end
 
-    def check_user_admin
-        unless current_user.admin?
-            redirect_to tasks_path , notice: t('notice.not_admin')
-        end
-    end
-
     def require_admin
         return if current_user&.admin == true
-      
-        redirect_to root_path , notice: t('notice.not_admin')
+        
+        flash[:notice] = I18n.t('notice.not_admin')
+        redirect_to root_path 
     end
 
 end
