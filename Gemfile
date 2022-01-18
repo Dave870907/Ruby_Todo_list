@@ -46,6 +46,7 @@ gem 'ransack'
 gem "rails-i18n"
 gem "aasm"
 gem "kaminari"
+gem 'select2-rails', '~> 4.0', '>= 4.0.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -6,11 +6,13 @@ zh-TW:
           pending: 待處理
           process: 進行中
           finish: 已完成
+        
 
   activerecord:
     models:
       task: 任務
       user: 使用者
+      label: 分類標籤
     attributes:
       task:  
         status: 狀態
@@ -25,6 +27,9 @@ zh-TW:
         user_name: 名字
         email: 電子信箱
         password: 密碼
+        admin: 管理員
+      label:
+        name: 標籤名稱
 
   types:
     status:
@@ -35,12 +40,16 @@ zh-TW:
       - 低
       - 中
       - 高
+    admin:
+      add: 管理員
+      minus: 非管理員
 
   action:
     edit: 編輯
     delete: 刪除
     delete_confirm: 確認刪除
     new: 新增任務
+    new_label: 新增標籤
     new_user: 新增用戶
     logout: 登出
     login: 登入
@@ -49,9 +58,11 @@ zh-TW:
     new_page: 新增任務 
     edit_page: 編輯任務
     new_user_page: 新增使用者
+    new_label_page: 新增任務標籤
     login: 登入
     user_index_page: 用戶管理
     user_edit_page: 編輯用戶資料
+    label_page: 標籤管理
   notice: 
     new: 新增成功！
     delete: 刪除成功！
@@ -60,12 +71,19 @@ zh-TW:
     login_fail: 使用者資料輸入錯誤！
     logout: 已登出
     not_login: 您尚未登入
+    not_admin: 權限不足 無法查看
+    no_admin: 無法移除最後一個管理員
   tasks_num: 任務數量
   back: 
     task: 回任務列表
     admin: 回管理頁面
+    label: 回標籤管理頁面
   search_form:
     title: 標題包含
     status: 狀態為
     all: 全
+    label: 請選擇標籤
+  error:
+    not_found: 404 無此頁面
+    internal_server_error: 500 伺服器出現問題
   

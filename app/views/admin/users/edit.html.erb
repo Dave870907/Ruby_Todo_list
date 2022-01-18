@@ -6,6 +6,11 @@
     <%= form.input :user_name %>
     <%= form.input :email %>
     <%= form.input :password %>
+    <% if current_user.admin? %>
+      <%= form.input :admin ,as: :radio_buttons , 
+      collection:[[t('types.admin.add'),true],[t('types.admin.minus'),false]]%>
+    <% end %>
+    
     <%= form.submit %>
 
 <%end%>

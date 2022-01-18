@@ -1,0 +1,32 @@
+
+<h1> <%= t("page_name.label_page")%></h1>
+
+
+<table class = "table" id="label_table">
+  <thead>
+    <tr>
+      <td><%=@labels.human_attribute_name(:name) %></td>
+      
+    </tr>
+
+  </thead>
+
+  <tbody>
+  <% @labels.each do |label| %>
+  <tr>
+    <td><%= label.name %></td>
+    <td>
+        <%= link_to t('action.delete'), label_path(label), method: "delete", 
+        data: { confirm: t('action.delete_confirm') } ,id:"delete-#{label.id}"%>
+    </td>
+
+  </tr>
+  <% end %>
+</tbody>
+</table>
+<%= paginate @labels%> 
+<br>
+
+<%= link_to t('action.new_label'), new_label_path %>
+<br><br>
+<%= link_to t('back.task'), tasks_path %>

@@ -49,7 +49,7 @@ class TasksController < ApplicationController
     private
     def task_params
         params.require(:task).permit(:title,:start_time,:end_time,
-                                    :status,:content,:order,:category)
+                                    :status,:content,:order,{ label_items: [] } )
     end    
 
 

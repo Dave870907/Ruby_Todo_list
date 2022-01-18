@@ -1,3 +1,6 @@
 <%= render 'task_by_user' , tasks: @tasks%>
 
-<%= link_to t('back.admin'), admin_root_path %>
+<%= link_to t('back.admin'), admin_root_path %><br><br>
+<% if current_user == @user %>
+  <%= link_to '去自己的任務頁面', tasks_path %>
+<% end %>
